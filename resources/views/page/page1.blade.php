@@ -9,21 +9,6 @@
 <h1>Пример использования AJAX</h1>
 <div id="result"></div>
 
-@php
-// Создаем массив данных
-$data = array("message" => "Привет, это данные с сервера!");
-
-// Преобразуем массив в JSON формат
-$json_data = json_encode($data);
-
-// Устанавливаем заголовок для указания типа контента
-header('Content-Type: application/json');
-
-// Выводим данные в формате JSON
-echo $json_data;
-
-@endphp
-
 <script>
     // Функция для выполнения AJAX запроса
     function fetchData() {
@@ -43,7 +28,7 @@ echo $json_data;
         };
 
         // Открываем соединение и отправляем GET запрос к серверу
-        xhr.open("GET", "fetch_data.php", true);
+        xhr.open("GET", "page1.php", true);
         xhr.send();
     }
 

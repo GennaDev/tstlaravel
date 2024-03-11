@@ -24,3 +24,5 @@ Route::get('/', function () {
 Route::get('/page1', function () {
     return view('page.page1');
 })->name('page1');
+
+Route::get('/page1', 'App\Http\Controllers\DataController@fetchData');

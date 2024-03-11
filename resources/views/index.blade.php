@@ -10,7 +10,7 @@
 
 <h3>Test Kung-fu</h3>
 
-<p><a href="{{ route('page1') }}">Link to AJAX rest</a></p>
+<p><a href="{{ route('page1') }}">Link to AJAX test</a></p>
 
 @php
 
