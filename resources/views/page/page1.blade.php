@@ -15,6 +15,7 @@
         var xhr = new XMLHttpRequest();
 
         // Устанавливаем обработчик события изменения состояния запроса
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
                 if (xhr.status == 200) {
@@ -28,7 +29,7 @@
         };
 
         // Открываем соединение и отправляем GET запрос к серверу
-        xhr.open("GET", "page1.php", true);
+        xhr.open("GET", "{{ route('fetch-data') }}", true);
         xhr.send();
     }
 

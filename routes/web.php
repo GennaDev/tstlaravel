@@ -25,4 +25,4 @@ Route::get('/page1', function () {
     return view('page.page1');
 })->name('page1');
 
-Route::get('/page1', 'App\Http\Controllers\DataController@fetchData');
+Route::get('/fetch-data', 'App\Http\Controllers\DataController@fetchData')->name('fetch-data');
