@@ -26,3 +26,5 @@ Route::get('/page1', function () {
 })->name('page1');
 
 Route::get('/fetch-data', 'App\Http\Controllers\DataController@fetchData')->name('fetch-data');
+
+Route::get('/sse', 'App\Http\Controllers\SSEController@index')->name('sse');

@@ -6,8 +6,10 @@
     <title>AJAX Example</title>
 </head>
 <body>
-<h1>Пример использования AJAX</h1>
-<div id="result"></div>
+<h1>Example AJAX</h1><br>
+<div id="result"></div><br>
+<h3>Translation</h3>
+<div id="translation"></div>
 
 <script>
     // Функция для выполнения AJAX запроса
@@ -21,6 +23,8 @@
                 if (xhr.status == 200) {
                     // Если запрос успешен, выводим полученные данные
                     document.getElementById("result").innerHTML = xhr.responseText;
+                    // Перевод
+                    document.getElementById("translation").innerHTML = " Hello, these are data from the server!";
                 } else {
                     // Выводим сообщение об ошибке, если запрос не удался
                     document.getElementById("result").innerHTML = "Произошла ошибка: " + xhr.status;

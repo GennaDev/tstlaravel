@@ -12,6 +12,8 @@
 
 <p><a href="{{ route('page1') }}">Link to AJAX test</a></p>
 
+<p><a href="{{ route('sse') }}">Link to SSE test</a></p>
+
 @php
 
 echo "Test PHP echo through @php"
