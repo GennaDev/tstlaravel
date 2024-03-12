@@ -14,6 +14,8 @@
 
 <p><a href="{{ route('sse') }}">Link to SSE test</a></p>
 
+<p><a href="{{ route('webhook') }}">Link to Webhook</a></p>
+
 @php
 
 echo "Test PHP echo through @php"

@@ -28,3 +28,5 @@ Route::get('/page1', function () {
 Route::get('/fetch-data', 'App\Http\Controllers\DataController@fetchData')->name('fetch-data');
 
 Route::get('/sse', 'App\Http\Controllers\SSEController@index')->name('sse');
+
+Route::get('/webhook', 'App\Http\Controllers\WebhookController@handleWebhook')->name('webhook');
