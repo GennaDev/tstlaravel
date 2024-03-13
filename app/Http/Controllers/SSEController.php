@@ -13,18 +13,25 @@ class SSEController extends Controller
             function () {
                 $counter = 0;
                 while (true) {
-                    echo "data: Log " . ++$counter . "\n\n";
-                    // Отправляем данные на клиент
-                    if (function_exists('fastcgi_finish_request')) {
-                        // Завершаем текущий запрос, чтобы данные были отправлены независимо от дальнейшей обработки
-                        fastcgi_finish_request();
-                    } else {
-                        // Для серверов без fastcgi_finish_request
+                    try {
+                        echo "data: Log " . ++$counter . "\n\n";
+                        // Отправляем данные на клиент
+                        if (function_exists('fastcgi_finish_request')) {
+                            // Завершаем текущий запрос, чтобы данные были отправлены независимо от дальнейшей обработки
+                            fastcgi_finish_request();
+                        } else {
+                            // Для серверов без fastcgi_finish_request
+                            ob_flush();
+                            flush();
+                        }
+                        // "Ждем" 1 секунду перед отправкой следующего сообщения
+                        sleep(1);
+                    } catch (\Throwable $e) {
+                        // Если произошло исключение, отправляем сообщение об ошибке
+                        echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
                         ob_flush();
                         flush();
                     }
-                    // "Ждем" 1 секунду перед отправкой следующего сообщения
-                    sleep(1);
                 }
             },
             200,
