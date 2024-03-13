@@ -16,15 +16,11 @@ class SSEController extends Controller
                     try {
                         $message = 'Log ' . $counter;
                         echo "data: $message\n\n";
-                        ob_flush();
-                        flush();
                         $counter++;
                         sleep(1); // Задержка в 1 секунду
                     } catch (\Throwable $e) {
                         // Обработка исключений
                         echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
-                        ob_flush();
-                        flush();
                     }
                 }
             },
@@ -35,6 +31,9 @@ class SSEController extends Controller
                 'Connection' => 'keep-alive',
             ]
         );
+
+        ob_flush(); // Очистить буфер вывода
+        flush();    // Очистить вывод
 
         return $response;
     }
