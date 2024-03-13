@@ -21,6 +21,7 @@ class SSEController extends Controller
                             fastcgi_finish_request();
                         } else {
                             // Для серверов без fastcgi_finish_request
+                            echo "Flushing buffer...\n";
                             ob_flush();
                             flush();
                         }
