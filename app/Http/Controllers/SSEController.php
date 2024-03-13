@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -31,3 +30,4 @@ class SSEController extends Controller
         return $response;
     }
 }
+

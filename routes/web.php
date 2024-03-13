@@ -25,8 +25,12 @@ Route::get('/page1', function () {
     return view('page.page1');
 })->name('page1');
 
+Route::get('/sse-page', function () {
+    return view('page.sse'); // Убедитесь, что ваш файл находится в директории resources/views/page/sse.blade.php
+})->name('sse-page');
+
 Route::get('/fetch-data', 'App\Http\Controllers\DataController@fetchData')->name('fetch-data');
 
-Route::get('/sse', 'App\Http\Controllers\SSEController@index')->name('sse');
+Route::get('/sse', 'App\Http\Controllers\SSEController@index')->name('sse-event');
 
 Route::get('/webhook', 'App\Http\Controllers\WebhookController@handleWebhook')->name('webhook');

@@ -11,7 +11,7 @@
 
 <script>
     // Создаем объект EventSource для установки соединения
-    var eventSource = new EventSource('{{ route("sse") }}');
+    var eventSource = new EventSource('{{ route("sse-event") }}');
 
     // Обработчик события message
     eventSource.onmessage = function(event) {
