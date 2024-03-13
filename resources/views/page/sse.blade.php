@@ -1,27 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server-Sent Events Example</title>
+    <title>SSE Example</title>
 </head>
 <body>
-<h1>Пример использования Server-Sent Events (SSE)</h1>
-<div id="result"></div>
+<h1>SSE Example</h1>
+<div id="sse-container"></div>
 
 <script>
-    // Создаем объект EventSource для установки соединения
-    var eventSource = new EventSource('{{ route("sse-event") }}');
+    // Create a new EventSource to listen for SSE
+    var eventSource = new EventSource('/sse');
 
-    // Обработчик события message
+    // Add an event listener to handle incoming messages
     eventSource.onmessage = function(event) {
-        document.getElementById('result').innerHTML += event.data + '<br>';
-    };
-
-    // Обработчик события error
-    eventSource.onerror = function(event) {
-        console.log('Произошла ошибка');
-        eventSource.close();
+        var data = JSON.parse(event.data);
+        document.getElementById('sse-container').innerHTML += '<p>' + data.time + '</p>';
     };
 </script>
 </body>

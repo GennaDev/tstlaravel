@@ -39,7 +39,7 @@ Route::get('/rpc-example', function () {
 
 Route::get('/fetch-data', 'App\Http\Controllers\DataController@fetchData')->name('fetch-data');
 
-Route::get('/sse', 'App\Http\Controllers\SSEController@index')->name('sse-event');
+Route::get('/sse', 'App\Http\Controllers\SSEController@serveSSE');
 
 Route::get('/webhook', 'App\Http\Controllers\WebhookController@handleWebhook')->name('webhook');
 
