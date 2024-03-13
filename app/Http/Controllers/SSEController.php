@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,11 +13,18 @@ class SSEController extends Controller
             function () {
                 $counter = 0;
                 while (true) {
-                    $message = 'Log ' . ++$counter;
-                    echo "data: $message\n\n";
-                    ob_flush();
-                    flush();
-                    sleep(1);
+                    try {
+                        $message = 'Log ' . ++$counter;
+                        echo "data: $message\n\n";
+                        ob_flush();
+                        flush();
+                        sleep(1);
+                    } catch (\Throwable $e) {
+                        // Обработка исключений
+                        echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
+                        ob_flush();
+                        flush();
+                    }
                 }
             },
             200,
@@ -30,4 +38,3 @@ class SSEController extends Controller
         return $response;
     }
 }
-
