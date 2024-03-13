@@ -13,12 +13,19 @@ class SSEController extends Controller
             function () {
                 $counter = 1;
                 while (true) {
-                    $message = 'Log ' . $counter;
-                    echo "data: $message\n\n";
-                    ob_flush();
-                    flush();
-                    $counter++;
-                    sleep(1); // Задержка в 1 секунду
+                    try {
+                        $message = 'Log ' . $counter;
+                        echo "data: $message\n\n";
+                        ob_flush();
+                        flush();
+                        $counter++;
+                        sleep(1); // Задержка в 1 секунду
+                    } catch (\Throwable $e) {
+                        // Обработка исключений
+                        echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
+                        ob_flush();
+                        flush();
+                    }
                 }
             },
             200,
@@ -32,4 +39,3 @@ class SSEController extends Controller
         return $response;
     }
 }
-
