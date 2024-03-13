@@ -16,14 +16,18 @@ class SSEController extends Controller
                     try {
                         $message = 'Log ' . ++$counter;
                         echo "data: $message\n\n";
-                        ob_flush();
-                        flush();
+                        if (ob_get_length()) {
+                            ob_flush();
+                            flush();
+                        }
                         sleep(1);
                     } catch (\Throwable $e) {
                         // Обработка исключений
                         echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
-                        ob_flush();
-                        flush();
+                        if (ob_get_length()) {
+                            ob_flush();
+                            flush();
+                        }
                     }
                 }
             },
@@ -38,3 +42,4 @@ class SSEController extends Controller
         return $response;
     }
 }
+
