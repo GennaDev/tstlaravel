@@ -21,3 +21,4 @@ class WebhookController extends Controller
         return response()->json(['message' => 'Webhook received'], 200);
     }
 }
+

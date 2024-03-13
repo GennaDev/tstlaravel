@@ -16,6 +16,12 @@
 
 <p><a href="{{ route('webhook') }}">Link to Webhook</a></p>
 
+<a href="/calculate">Перейти к калькулятору API</a>
+<br><br>
+<a href="/rpc-example">Перейти к RPC</a>
+<br>
+<br>
+
 @php
 
 echo "Test PHP echo through @php"
