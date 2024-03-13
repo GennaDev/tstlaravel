@@ -11,24 +11,14 @@ class SSEController extends Controller
         // Отправляем заголовки для SSE
         $response = response()->stream(
             function () {
-                $counter = 0;
+                $counter = 1;
                 while (true) {
-                    try {
-                        $message = 'Log ' . ++$counter;
-                        echo "data: $message\n\n";
-                        if (ob_get_length()) {
-                            ob_flush();
-                            flush();
-                        }
-                        sleep(1);
-                    } catch (\Throwable $e) {
-                        // Обработка исключений
-                        echo "data: Exception occurred: " . $e->getMessage() . "\n\n";
-                        if (ob_get_length()) {
-                            ob_flush();
-                            flush();
-                        }
-                    }
+                    $message = 'Log ' . $counter;
+                    echo "data: $message\n\n";
+                    ob_flush();
+                    flush();
+                    $counter++;
+                    sleep(1); // Задержка в 1 секунду
                 }
             },
             200,
